@@ -1,0 +1,154 @@
+/* ===== Universal/Global Styles ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+header {
+    background: linear-gradient(135deg, #FF5A5F 0%, #E61E4D 100%);
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+main {
+    max-width: 700px;
+    margin: 3rem auto;
+    padding: 3rem 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+a {
+    color: #FF5A5F;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #E61E4D;
+    text-decoration: underline;
+}
+
+/* ===== 404 Error Block ===== */
+.error-code {
+    font-size: 7rem;
+    font-weight: 700;
+    color: #FF5A5F;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    letter-spacing: -2px;
+}
+
+.error-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+main h2 {
+    font-size: 1.6rem;
+    color: #333;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+main p {
+    font-size: 1.05rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ===== Divider ===== */
+.divider {
+    border: none;
+    border-top: 1.5px solid #f0f0f0;
+    margin: 1.5rem auto;
+    width: 60%;
+}
+
+/* ===== Back Button ===== */
+.btn-home {
+    display: inline-block;
+    background: linear-gradient(135deg, #FF5A5F 0%, #E61E4D 100%);
+    color: white;
+    padding: 0.85rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(255, 90, 95, 0.3);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-home:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 90, 95, 0.4);
+    color: white;
+    text-decoration: none;
+}
+
+.btn-home:active {
+    transform: translateY(0);
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    main {
+        margin: 2rem 1rem;
+        padding: 2rem 1.5rem;
+    }
+
+    .error-code {
+        font-size: 5rem;
+    }
+
+    main h2 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    main {
+        margin: 1rem 0.5rem;
+        padding: 1.5rem 1rem;
+    }
+
+    .error-code {
+        font-size: 4rem;
+    }
+
+    .btn-home {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.95rem;
+    }
+}

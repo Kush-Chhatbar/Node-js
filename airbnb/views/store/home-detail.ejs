@@ -1,0 +1,128 @@
+<%- include('../partials/head') %>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-[#667eea] to-[#764ba2] font-sans text-[#333]">
+
+    <%- include('../partials/nav') %>
+
+    <header class="bg-gradient-to-r from-[#FF5A5F] to-[#E61E4D] text-white text-center py-8 px-4 shadow-md">
+        <h1 class="text-4xl font-bold tracking-wide">
+            Welcome to Airbnb
+        </h1>
+    </header>
+
+    <main class="max-w-5xl mx-auto mt-8 mb-8 p-8 bg-white rounded-xl shadow-lg text-center">
+        <p class="text-xl text-[#555] my-6">
+            Home Details
+        </p>
+
+        <p class="text-sm font-semibold text-[#aaa] uppercase tracking-widest mt-10 mb-4 text-left">
+            Details:
+        </p>
+
+        <div class="bg-white rounded-3xl border border-gray-200 overflow-hidden max-w-5xl mx-auto -ml-[5px]">
+
+            <div class="grid md:grid-cols-2 gap-0">
+
+                <!-- Image Section -->
+                <div class="relative">
+                    <img
+                        src="<%= home.photoUrl %>"
+                        alt="<%= home.houseName %>"
+                        class="w-full h-full object-cover min-h-[500px]"
+                    >
+
+                    <div class="absolute top-5 right-5 bg-white px-4 py-2 rounded-full shadow font-semibold">
+                        ⭐ <%= home.rating %>
+                    </div>
+                </div>
+
+                <!-- Details Section -->
+                <div class="p-8 flex flex-col justify-between">
+
+                    <div>
+
+                        <span class="inline-block bg-[#FFE8EC] text-[#FF5A5F] px-3 py-1 rounded-full text-sm font-medium mb-4">
+                            Premium Stay
+                        </span>
+
+                        <h2 class="text-4xl font-bold text-gray-800 mb-4">
+                            <%= home.houseName %>
+                        </h2>
+
+                        <div class="flex items-center text-gray-500 mb-6">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-5 h-5 mr-2"
+                                fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                            </svg>
+
+                            <span class="text-lg">
+                                <%= home.location %>
+                            </span>
+                        </div>
+
+                        <div class="border-t border-b py-6 my-6">
+
+                            <div class="flex justify-between mb-4">
+                               <span class="font-medium text-gray-600">
+                                    Price Per Night
+                                </span>
+
+                               <span class="font-bold text-4xl text-[#FF5A5F]">
+                                    $<%= home.price %>
+                                </span>
+                            </div>
+
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">
+                                    Guest Rating
+                                </span>
+
+                                <span class="font-semibold">
+                                    ⭐ <%= home.rating %> / 5
+                                </span>
+                            </div>
+
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-semibold mb-3">
+                                About this home
+                            </h3>
+
+                            <p class="text-gray-600 leading-relaxed">
+                                Enjoy a luxurious stay at
+                                <strong><%= home.houseName %></strong>
+                                located in
+                                <strong><%= home.location %></strong>.
+                                Perfect for vacations, weekend getaways and
+                                unforgettable experiences with friends and family.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="mt-8 flex gap-3">
+                        <%- include('../partials/favourites') %>
+                        <a
+                            href="/homes"
+                            class="flex-1 text-center bg-gray-100 py-3 rounded-xl font-semibold hover:bg-gray-200 transition">
+                            Back
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+</html>

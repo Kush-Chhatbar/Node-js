@@ -1,0 +1,232 @@
+/* ===== Universal/Global Styles ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+header {
+    background: linear-gradient(135deg, #FF5A5F 0%, #E61E4D 100%);
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+a {
+    color: #FF5A5F;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #E61E4D;
+    text-decoration: underline;
+}
+
+/* ===== Home Page Styles ===== */
+.home-page main {
+    text-align: center;
+}
+
+.home-page main p {
+    font-size: 1.2rem;
+    color: #555;
+    margin: 1.5rem 0;
+}
+
+.home-page main a {
+    display: inline-block;
+    background: linear-gradient(135deg, #FF5A5F 0%, #E61E4D 100%);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 12px rgba(255, 90, 95, 0.3);
+    transition: all 0.3s ease;
+}
+
+.home-page main a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 90, 95, 0.4);
+    text-decoration: none;
+    color: white;
+}
+
+/* ===== Add Home Page Styles ===== */
+.add-home-page main {
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.add-home-page form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.add-home-page label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.add-home-page input[type="text"],
+.add-home-page input[type="number"],
+.add-home-page textarea {
+    padding: 0.75rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.add-home-page input[type="text"]:focus,
+.add-home-page input[type="number"]:focus,
+.add-home-page textarea:focus {
+    outline: none;
+    border-color: #FF5A5F;
+    box-shadow: 0 0 0 3px rgba(255, 90, 95, 0.1);
+}
+
+.add-home-page input[type="submit"] {
+    background: linear-gradient(135deg, #FF5A5F 0%, #E61E4D 100%);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(255, 90, 95, 0.3);
+    transition: all 0.3s ease;
+}
+
+.add-home-page input[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 90, 95, 0.4);
+}
+
+.add-home-page input[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* ===== Home Created Page Styles ===== */
+.home-created-page main {
+    text-align: center;
+    padding: 3rem 2rem;
+}
+
+.home-created-page main h2 {
+    font-size: 2rem;
+    color: #27AE60;
+    margin-bottom: 1rem;
+}
+
+.home-created-page main p {
+    font-size: 1.1rem;
+    color: #555;
+    margin: 1.5rem 0;
+}
+
+.success-message {
+    background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    border-left: 5px solid #27AE60;
+}
+
+.success-message p {
+    font-size: 1.2rem;
+    color: #27AE60;
+    font-weight: 600;
+}
+
+.home-created-page main a {
+    display: inline-block;
+    background: linear-gradient(135deg, #FF5A5F 0%, #E61E4D 100%);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(255, 90, 95, 0.3);
+    transition: all 0.3s ease;
+}
+
+.home-created-page main a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 90, 95, 0.4);
+    text-decoration: none;
+    color: white;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    main {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+
+    .add-home-page main {
+        max-width: 100%;
+    }
+
+    .home-created-page main {
+        padding: 2rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    main {
+        margin: 0.5rem;
+        padding: 1rem;
+    }
+
+    .home-page main a,
+    .home-created-page main a {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.95rem;
+    }
+
+    .add-home-page input[type="submit"] {
+        padding: 0.65rem 1.2rem;
+    }
+}
