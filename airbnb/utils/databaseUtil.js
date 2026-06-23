@@ -2,7 +2,7 @@ const mongodb = require('mongodb');
 
 const MongoClient = mongodb.MongoClient
 
-const MONGO_URL = "mongodb+srv://kushchhatbar19_db_user:7hnvfS2gxeGzo0WD@cluster0.jyhbqcl.mongodb.net/?appName=Cluster0";
+const MONGO_URL = "your_mongo_cluster";
 
 const mongoConnect = (callback) => {
     MongoClient.connect(MONGO_URL).then(client =>{
