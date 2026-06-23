@@ -2,7 +2,12 @@ const Favourites = require('../models/favourites');
 const Home = require('../models/home');
 
 const getHostHomes = (req, res, next) => {
-    const registeredHomes = Home.fetchAll((registeredHomes) => res.render("../views/host/host-home-list", { registeredHomes: registeredHomes , pageTitle: "Airbnb Host Homes" }));
+    const registeredHomes = Home.fetchAll().then(([registeredHomes, fields]) => {
+        res.render("../views/host/host-home-list", 
+            { registeredHomes: registeredHomes , 
+              pageTitle: "Airbnb Host Homes" 
+            })
+    });
 }
 
 const getAddHome = (req, res, next) => {
@@ -12,48 +17,74 @@ const getAddHome = (req, res, next) => {
 
 const getHomeCreated = (req, res, next) => {
     console.log("Received form data:", req.body, req.body.house);
-    const {id, houseName, price, location, rating, photoUrl} = req.body;
-    const home = new Home(null, houseName, price, location, rating, photoUrl );
+    const {id, houseName, price, location, rating, description, photoUrl} = req.body;
+    const home = new Home(null, houseName, price, location, rating, description, photoUrl);
     home.save();
     res.render("../views/host/home-created", { pageTitle: "Airbnb - Home Created" });
 }
 
 const getHomeDetailsForEdit = (req, res, next) => {
-    Home.findById(req.params.homeId, (home) => {
-        if(!home){
-            console.log("Home not found for updation.")
-            res.redirect("/host/homes");
-        }else{
+    Home.findById(req.params.homeId)
+        .then(([rows]) => {
+            const home = rows[0];
+
+            if (!home) {
+                console.log("Home not found for updation.");
+                return res.redirect("/host/homes");
+            }
+
             res.render('host/edit-home', {
-                home: home,
+                home,
                 pageTitle: "Airbnb Edit Home Details"
             });
-        }
-    });
-}
+        })
+        .catch(err => {
+            console.log(err);
+            res.redirect('/host/homes');
+        });
+};
 
 const getHomeUpdated = (req, res, next) => {
-    const {id, houseName, price, location, rating, photoUrl} = req.body;
-    const updatedHome  = new Home(id, houseName, price, location, rating, photoUrl);
-    console.log(updatedHome);
-    updatedHome.update(updatedHome);
-    res.render("../views/host/home-updated", { pageTitle: "Airbnb - Home Detils Updated" });
-}
+    const { id, houseName, price, location, rating, description, photoUrl } = req.body;
+
+    const updatedHome = new Home(
+        id,
+        houseName,
+        price,
+        location,
+        rating,
+        description,
+        photoUrl
+    );
+
+    updatedHome.update()
+        .then(() => {
+            res.redirect("/host/homes");
+        })
+        .catch(err => {
+            console.log("Error updating home:", err);
+            res.status(500).send("Failed to update home");
+        });
+};
 
 const getHomeDeleted = (req, res, next) => {
     const homeId = req.body.id;
-    Home.deleteById(homeId, error => {
-        if(error){
-            console.log("Error while deleting home", error);
-        }
-        Favourites.removeFromFavourite(homeId, error => {
-            if(error){
-                console.log("Error while deleting home", error);
-            }
-            res.redirect("/host/homes");
+
+    Home.deleteById(homeId)
+        .then(() => {
+            Favourites.removeFromFavourite(homeId, (error) => {
+                if (error) {
+                    console.log("Error while removing from favourites:", error);
+                }
+
+                res.redirect("/host/homes");
+            });
+        })
+        .catch((error) => {
+            console.log("Error while deleting home:", error);
+            res.status(500).send("Failed to delete home.");
         });
-    });
-}
+};
 
 exports.getAddHome = getAddHome;
 exports.getHomeCreated = getHomeCreated;

@@ -46,6 +46,20 @@
             </div>
 
             <div class="flex flex-col gap-2">
+                <label for="description" class="text-[1.1rem] font-semibold text-[#333]">
+                    Description
+                </label>
+                <textarea
+                    id="description"
+                    name="description"
+                    rows="4"
+                    placeholder="Describe your property, amenities, nearby attractions, and what makes it unique..."
+                    required
+                    class="px-3 py-3 border-2 border-[#ddd] rounded-lg text-base font-sans resize-y focus:outline-none focus:border-[#FF5A5F] focus:ring-2 focus:ring-[#FF5A5F]/20 transition-colors duration-300"
+                ></textarea>
+            </div>
+
+            <div class="flex flex-col gap-2">
                 <label for="photoUrl" class="text-[1.1rem] font-semibold text-[#333]">Photo URL</label>
                 <input type="url" id="photoUrl" name="photoUrl" placeholder="https://example.com/photo.jpg"
                     class="px-3 py-3 border-2 border-[#ddd] rounded-lg text-base font-sans focus:outline-none focus:border-[#FF5A5F] focus:ring-2 focus:ring-[#FF5A5F]/20 transition-colors duration-300">

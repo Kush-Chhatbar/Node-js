@@ -3,15 +3,27 @@ const Favourites = require('../models/favourites');
 const { post } = require('../routes/storeRouter');
 
 const getIndex = (req, res, next) => {
-    const registeredHomes = Home.fetchAll((registeredHomes) => res.render("../views/store/index", { registeredHomes: registeredHomes , pageTitle: "Airbnb" }));
+    const registeredHomes = Home.fetchAll().then(([registeredHomes, fields]) => {
+        res.render("../views/store/index", 
+            { registeredHomes: registeredHomes , 
+              pageTitle: "Airbnb" 
+            })
+    });
 };
 
 const getHomes = (req, res, next) => {
-    const registeredHomes = Home.fetchAll((registeredHomes) => res.render("../views/store/home-list", { registeredHomes: registeredHomes , pageTitle: "Airbnb Homes" }));
+        const registeredHomes = Home.fetchAll().then(([registeredHomes, fields]) => {
+        res.render("../views/store/home-list", 
+            { 
+                registeredHomes: registeredHomes , 
+                pageTitle: "Airbnb Homes" 
+            })
+    });
 };
 
 const getHomeDetails = (req, res, next) => {
-    Home.findById(req.params.homeId, (home) => {
+    Home.findById(req.params.homeId).then(([rows]) => {
+        const home = rows[0];
         if(!home){
             res.redirect("/homes");
         }else{
@@ -25,7 +37,13 @@ const getHomeDetails = (req, res, next) => {
 
 
 const getBookings = (req, res, next) =>{
-    const registeredHomes = Home.fetchAll((registeredHomes) => res.render("../views/store/bookings", { registeredHomes: registeredHomes , pageTitle: "Airbnb Bookings" }));
+    const registeredHomes = Home.fetchAll().then(([registeredHomes, fields]) => {
+        res.render("../views/store/bookings", 
+            { 
+                registeredHomes: registeredHomes , 
+                pageTitle: "Airbnb Bookings"
+            })
+    });
 };
 
 const getFavourites = (req, res, next) => {
@@ -48,6 +66,7 @@ const postAddToFavourite = (req, res, next) => {
             home.price,
             home.location,
             home.rating,
+            home.description,
             home.photoUrl
         );
 
